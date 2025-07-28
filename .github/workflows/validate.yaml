@@ -1,0 +1,16 @@
+name: Validate RBAC Config
+
+on:
+  push:
+    paths:
+      - 'rbac/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Validate YAML with kubeval
+      uses: instrumenta/kubeval-action@v1
+      with:
+        files: rbac/rbac-config.yaml
